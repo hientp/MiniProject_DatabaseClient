@@ -1,0 +1,28 @@
+//Example for new Checking Account
+{
+  "primaryOwnerId": 1,
+  "secondaryOwner": null,
+  "creationDate": null,
+  "balance": 500.00,
+  "secretKey": "secretKey_0"
+}
+//Example for new Savings Account
+{
+  "primaryOwnerId": 1,
+  "secondaryOwner": null,
+  "creationDate": null,
+  "balance": 2500.00,
+  "secretKey": "secretKey_x",
+  "minimumBalance": 900.00,
+  "interestRate": 0.40
+}
+//Example for new Credit Card
+{
+  "primaryOwnerId": 5,
+  "secondaryOwner": null,
+  "creationDate": null,
+  "balance": 2500.00,
+  "secretKey": "secretKey_y",
+  "creditLimit": 900.00,
+  "interestRate": 0.10
+}

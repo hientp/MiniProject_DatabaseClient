@@ -1,0 +1,4 @@
+/src/main/resources/application-patrick.properties
+/src/test/resources/application-patrick.properties
+/.idea/
+/target/
