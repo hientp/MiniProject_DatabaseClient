@@ -41,8 +41,6 @@ public interface TransactionRepository extends JpaRepository<Transaction,Integer
             "((Select account_id, transaction_id\n" +
             "FROM\n" +
             "(Select id\n" +
-            "FROM\n" +
-            "(Select id\n" +
             "FROM account\n" +
             "where user_id=:user_id) acc\n" +
             "LEFT JOIN (Select * FROM transaction_partners where alignment='SENDER') tp\n" +

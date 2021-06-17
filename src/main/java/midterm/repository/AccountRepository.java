@@ -9,5 +9,5 @@ public interface AccountRepository extends JpaRepository<Account,Integer> {
 
     Account findAccountById(Integer id);
 
-    Integer getUserIdById(Integer AccountId);
+    Integer findUserIdById(Integer AccountId);
 }

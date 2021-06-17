@@ -11,10 +11,11 @@ import java.math.BigDecimal;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    Integer userID;
+    @Column(name="user_id")
+    Integer userId;
 
     @Enumerated(EnumType.STRING)
     private Status status= Status.ACTIVE;
@@ -29,7 +30,7 @@ public class Account {
     }
 
     public Account(Integer userID, Status status, Typ typ, BigDecimal balance) {
-        this.userID = userID;
+        this.userId = userID;
         this.status = status;
         this.typ = typ;
         this.balance = balance;
@@ -37,7 +38,7 @@ public class Account {
 
     public Account(Integer id, Integer userID, Status status, Typ typ, BigDecimal balance) {
         this.id = id;
-        this.userID = userID;
+        this.userId = userID;
         this.status = status;
         this.typ = typ;
         this.balance = balance;
@@ -52,11 +53,11 @@ public class Account {
     }
 
     public Integer getUserID() {
-        return userID;
+        return userId;
     }
 
     public void setUserID(Integer userID) {
-        this.userID = userID;
+        this.userId = userID;
     }
 
     public Status getStatus() {

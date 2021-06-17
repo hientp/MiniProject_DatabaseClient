@@ -113,7 +113,7 @@ public class TransactionFunctionalityService {
 
     //Function for detecting if amounts of the day would exceed 150% of max value
     public Boolean fraudDetectionMaxDailyAmount(LocalDateTime TimeStamp,AccountRepository accountRepository,Account Sender,TransactionRepository transactionRepository, BigDecimal amount) {
-        Integer userId= accountRepository.getUserIdById(Sender.getId());
+        Integer userId= Sender.getUserID();
         List<Object[]> objList = transactionRepository.getMaxTransactionAmountPerDay(userId, TimeStamp.toLocalDate());
         List<Object[]> objList2 = transactionRepository.getSumTransactionAmountForThisDay(userId, TimeStamp.toLocalDate());
         if(objList.get(0)==null){
