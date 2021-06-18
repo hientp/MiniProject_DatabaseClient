@@ -73,6 +73,16 @@ public class TransactionFunctionalityService {
         }
     }
 
+    public Account modifyAccountStatus (Integer id, Status status) {
+        try{
+            Account account = accountRepository.findAccountById(id);
+            account.setStatus(status);
+            return accountRepository.save(account);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Something happened.");
+        }
+    }
+
     //Function to transact money with fraud detection activated and with given timestamp
     public ResponseEntity<Transaction> transactMoneySecured(LocalDateTime TimeStamp, AccountRepository accountRepository, Account Sender, Account Receiver, TransactionRepository transactionRepository, TransactionPartnersRepository transactionPartnersRepository, BigDecimal amount)  {
         //Check if status is active

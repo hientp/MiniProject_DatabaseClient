@@ -3,6 +3,7 @@ package midterm.controller;
 import midterm.controller.dto.*;
 import midterm.models.Account;
 import midterm.models.Transaction;
+import midterm.models.enums.Status;
 import midterm.repository.AccountRepository;
 import midterm.repository.TransactionRepository;
 import midterm.service.TransactionFunctionalityService;
@@ -50,6 +51,13 @@ public class TransactionController {
     @ResponseStatus(HttpStatus.OK)
     public Account modifyAccountBalance(@PathVariable Integer id, @RequestBody @Valid BalanceDTO balanceDTO)  {
         return transactionFunctionalityService.modifyAccountBalance(id,balanceDTO);
+    }
+
+    //Modify status account
+    @PatchMapping("/banking/transactions_account_balance/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Account modifyAccountStatus(@PathVariable Integer id, @RequestBody Status status)  {
+        return transactionFunctionalityService.modifyAccountStatus(id,status);
     }
 
 
