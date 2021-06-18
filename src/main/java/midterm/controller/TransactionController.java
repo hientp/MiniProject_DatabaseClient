@@ -35,7 +35,7 @@ public class TransactionController {
     //Erhalte AccountInformationen
     @GetMapping("/banking/transactions/getaccount/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Account> getTransactionAccount(@RequestParam Integer id) {
+    public ResponseEntity<Account> getTransactionAccount(@PathVariable Integer id) {
         return transactionFunctionalityService.findAccountById(id,accountRepository);
     }
 
@@ -47,7 +47,7 @@ public class TransactionController {
     }
 
     //Modify balance checking account
-    @PatchMapping("/banking/transactions_account_balance/{id}")
+    @PutMapping("/banking/transactions_account_balance/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Account modifyAccountBalance(@PathVariable Integer id, @RequestBody @Valid BalanceDTO balanceDTO)  {
         return transactionFunctionalityService.modifyAccountBalance(id,balanceDTO);
