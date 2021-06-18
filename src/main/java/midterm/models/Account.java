@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @Column(name="user_id")

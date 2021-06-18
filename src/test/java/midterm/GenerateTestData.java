@@ -45,6 +45,7 @@ public class GenerateTestData {
     public void setUp() throws Exception{
         //set up all accounts
         BigDecimal balance0, balance1, interestRate1,interestRate2,creditLimit1,minimumBalance1;
+        int j=67;
         for(int i=0;i<50;i++){
             balance0=new BigDecimal("500").multiply(BigDecimal.valueOf(i+1));
             balance1=new BigDecimal("200").multiply(BigDecimal.valueOf(i+1));
@@ -53,12 +54,16 @@ public class GenerateTestData {
             minimumBalance1= new BigDecimal("100").add(new BigDecimal("10").multiply(BigDecimal.valueOf(i)));
             creditLimit1= new BigDecimal("100").add(new BigDecimal("1000").multiply(BigDecimal.valueOf(i)));
             if(i<30) {
-                creditCardList.add(new Account(i+67,i+1, Status.ACTIVE,Typ.CREDIT_CARD,balance1));
-                checkingAccountList.add(new Account(i+68,i+1, Status.ACTIVE,Typ.CHECKING_ACCOUNT,balance0));
+                creditCardList.add(new Account(j,i+1, Status.ACTIVE,Typ.CREDIT_CARD,balance1));
+                j++;
+                checkingAccountList.add(new Account(j,i+1, Status.ACTIVE,Typ.CHECKING_ACCOUNT,balance0));
+                j++;
                 accountRepository.save(creditCardList.get(i));
             } else {
-                savingsAccountList.add(new Account(i+67,i+1, Status.ACTIVE,Typ.SAVINGS_ACCOUNT,balance1));
-                checkingAccountList.add(new Account(i+68,i+1, Status.ACTIVE,Typ.CHECKING_ACCOUNT,balance0));
+                savingsAccountList.add(new Account(j,i+1, Status.ACTIVE,Typ.SAVINGS_ACCOUNT,balance1));
+                j++;
+                checkingAccountList.add(new Account(j,i+1, Status.ACTIVE,Typ.CHECKING_ACCOUNT,balance0));
+                j++;
                 accountRepository.save(savingsAccountList.get(i-30));
             }
             accountRepository.save(checkingAccountList.get(i));
