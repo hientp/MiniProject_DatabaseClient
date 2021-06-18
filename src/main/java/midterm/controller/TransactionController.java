@@ -1,6 +1,7 @@
 package midterm.controller;
 
 import midterm.controller.dto.*;
+import midterm.models.Account;
 import midterm.models.Transaction;
 import midterm.repository.AccountRepository;
 import midterm.repository.TransactionRepository;
@@ -23,11 +24,32 @@ public class TransactionController {
     private TransactionFunctionalityService transactionFunctionalityService;
 
 
-    //Anlegen von neuem checkingAccount
+    //Übertragung von Geld
     @PostMapping("/banking/transferMoney/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Transaction> transferMoney(@RequestBody @Valid TransactionDTO transactionDTO) {
         return transactionFunctionalityService.transferMoney(transactionDTO);
+    }
+
+    //Erhalte AccountInformationen
+    @GetMapping("/banking/transactions/getaccount/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Account> getTransactionAccount(@RequestParam Integer id) {
+        return transactionFunctionalityService.findAccountById(id,accountRepository);
+    }
+
+    //Erhalte AccountInformationen
+    @PostMapping("/banking/transactions/postaccount/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Account> postTransactionAccount(@RequestParam Integer id,@RequestBody AccountDTO accountDTO) {
+        return transactionFunctionalityService.postTransactionAccount(accountDTO);
+    }
+
+    //Modify balance checking account
+    @PatchMapping("/banking/transactions_account_balance/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Account modifyCheckingAccountBalance(@PathVariable Integer id, @RequestBody @Valid BalanceDTO balanceDTO)  {
+        return transactionFunctionalityService.modifyAccountBalance(id,balanceDTO);
     }
 
 

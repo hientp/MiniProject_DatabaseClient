@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -48,6 +49,27 @@ public class TransactionFunctionalityService {
             return new ResponseEntity<Account>(accountRepository.findAccountById(id), HttpStatus.OK);
         } else {
             throw new RuntimeException("Id not found!");
+        }
+    }
+
+    //Function to post account
+    public ResponseEntity<Account> postTransactionAccount(AccountDTO accountDTO) {
+        try {
+            Account acc = new Account(accountDTO.getUserId(),accountDTO.getStatus(),accountDTO.getTyp(),accountDTO.getBalance());
+            accountRepository.save(acc);
+            return ResponseEntity.accepted().body(acc);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Provided values not valid.");
+        }
+    }
+
+    public Account modifyAccountBalance (Integer id, BalanceDTO balanceDTO) {
+        try{
+            Account account = accountRepository.findAccountById(id);
+            account.setBalance(balanceDTO.getBalance());
+            return accountRepository.save(account);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Something happened.");
         }
     }
 
