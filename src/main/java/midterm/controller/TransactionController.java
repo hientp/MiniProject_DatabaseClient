@@ -48,7 +48,7 @@ public class TransactionController {
     //Modify balance checking account
     @PatchMapping("/banking/transactions_account_balance/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Account modifyCheckingAccountBalance(@PathVariable Integer id, @RequestBody @Valid BalanceDTO balanceDTO)  {
+    public Account modifyAccountBalance(@PathVariable Integer id, @RequestBody @Valid BalanceDTO balanceDTO)  {
         return transactionFunctionalityService.modifyAccountBalance(id,balanceDTO);
     }
 
