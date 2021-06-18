@@ -54,11 +54,11 @@ public class TransactionController {
     }
 
     //Modify status account
-    @PatchMapping("/banking/transactions_account_status/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Account modifyAccountStatus(@PathVariable Integer id, @RequestBody Status status)  {
-        return transactionFunctionalityService.modifyAccountStatus(id,status);
-    }
+//    @PatchMapping("/banking/transactions_account_status/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public Account modifyAccountStatus(@PathVariable Integer id, @RequestBody Status status)  {
+//        return transactionFunctionalityService.modifyAccountStatus(id,status);
+//    }
 
 
 
